@@ -77,10 +77,19 @@ class ClientResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\ContactsRelationManager::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageClients::route('/'),
+            'index' => Pages\ListClients::route('/'),
+            'create' => Pages\CreateClient::route('/criar'),
+            'edit' => Pages\EditClient::route('/{record}/editar'),
         ];
     }
 }
