@@ -24,14 +24,16 @@ class Addendum extends Model
     ];
 
     protected $casts = [
-        'global_value' => 'double',
-        'monthly_value' => 'double',
-        'adjustment_percentual' => 'double',
         'is_active' => 'boolean'
     ];
 
     public function contract(): BelongsTo
     {
         return $this->belongsTo(Contract::class);
+    }
+
+    public function adjustmentIndex(): BelongsTo
+    {
+        return $this->belongsTo(AdjustmentIndex::class);
     }
 }

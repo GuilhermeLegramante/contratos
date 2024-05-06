@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\ClientResource\RelationManagers;
+namespace App\Filament\Resources\ContractResource\RelationManagers;
 
-use App\Filament\Forms\ContactForm;
-use App\Filament\Tables\ContactTable;
+use App\Filament\Forms\AddendumForm;
+use App\Filament\Tables\AddendumTable;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -14,27 +14,27 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ContactsRelationManager extends RelationManager
+class AddendumsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'contacts';
+    protected static string $relationship = 'addendums';
 
-    protected static ?string $title = 'Contatos';
+    protected static ?string $title = 'Termos Aditivos';
 
-    protected static ?string $label = 'Contato';
+    protected static ?string $label = 'Termo Aditivo';
 
-    protected static ?string $pluralLabel = 'Contatos';
+    protected static ?string $pluralLabel = 'Termos Aditivos';
 
     public function form(Form $form): Form
     {
         return $form
-            ->schema(ContactForm::form());
+            ->schema(AddendumForm::form());
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('name')
-            ->columns(ContactTable::table())
+            ->recordTitleAttribute('number')
+            ->columns(AddendumTable::table())
             ->filters([
                 //
             ])

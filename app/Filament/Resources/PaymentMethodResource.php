@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Forms\ClientForm;
-use App\Filament\Resources\ClientResource\Pages;
-use App\Filament\Resources\ClientResource\RelationManagers;
-use App\Models\Client;
+use App\Filament\Forms\PaymentMethodForm;
+use App\Filament\Resources\PaymentMethodResource\Pages;
+use App\Filament\Resources\PaymentMethodResource\RelationManagers;
+use App\Models\PaymentMethod;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,26 +16,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ClientResource extends Resource
+class PaymentMethodResource extends Resource
 {
-    protected static ?string $model = Client::class;
+    protected static ?string $model = PaymentMethod::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $modelLabel = 'cliente';
+    protected static ?string $modelLabel = 'forma de pagamento';
 
-    protected static ?string $pluralModelLabel = 'clientes';
+    protected static ?string $pluralModelLabel = 'formas de pagamento';
 
     protected static ?string $navigationGroup = 'Parâmetros';
 
-    protected static ?string $slug = 'cliente';
+    protected static ?string $slug = 'forma-de-pagamento';
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(ClientForm::form());
+            ->schema(PaymentMethodForm::form());
     }
 
     public static function table(Table $table): Table
@@ -45,22 +45,13 @@ class ClientResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nome')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('cpf_cnpj')
-                    ->label('CPF ou CNPJ')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->label('E-mail')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->label('Telefone')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Criado em')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Editado em')
+                    ->label('Editao em')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -81,19 +72,10 @@ class ClientResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\ContactsRelationManager::class,
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListClients::route('/'),
-            'create' => Pages\CreateClient::route('/criar'),
-            'edit' => Pages\EditClient::route('/{record}/editar'),
+            'index' => Pages\ManagePaymentMethods::route('/'),
         ];
     }
 }

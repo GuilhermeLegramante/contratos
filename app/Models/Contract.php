@@ -26,8 +26,6 @@ class Contract extends Model
     ];
 
     protected $casts = [
-        'global_value' => 'double',
-        'monthly_value' => 'double',
         'is_active' => 'boolean'
     ];
 
@@ -46,7 +44,7 @@ class Contract extends Model
         return $this->belongsToMany(Software::class);
     }
 
-    public function contracts(): HasMany
+    public function addendums(): HasMany
     {
         return $this->hasMany(Addendum::class);
     }
