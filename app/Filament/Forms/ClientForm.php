@@ -27,6 +27,7 @@ class ClientForm
                         ->maxLength(255),
                     Document::make('cpf_cnpj')
                         ->label('CPF ou CNPJ')
+                        ->required()
                         ->dynamic(),
                     TextInput::make('email')
                         ->label('E-mail')
