@@ -10,6 +10,8 @@ class Software extends Model
 {
     use HasFactory;
 
+    protected $table = 'softwares';
+
     protected $fillable = [
         'name',
         'note'
@@ -18,5 +20,10 @@ class Software extends Model
     public function contracts(): BelongsToMany
     {
         return $this->belongsToMany(Contract::class);
+    }
+
+    public function clients(): BelongsToMany
+    {
+        return $this->belongsToMany(Client::class);
     }
 }

@@ -68,8 +68,8 @@ class AddendumResource extends Resource
     {
         return [
             'index' => Pages\ListAddendums::route('/'),
-            'create' => Pages\CreateAddendum::route('/create'),
-            'edit' => Pages\EditAddendum::route('/{record}/edit'),
+            'create' => Pages\CreateAddendum::route('/criar'),
+            'edit' => Pages\EditAddendum::route('/{record}/editar'),
         ];
     }
 

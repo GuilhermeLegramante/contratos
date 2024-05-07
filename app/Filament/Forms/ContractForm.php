@@ -58,6 +58,15 @@ class ContractForm
                     Toggle::make('is_active')
                         ->inline(false)
                         ->label('Ativo'),
+                    Select::make('softwares')
+                        ->label('Softwares')
+                        ->relationship('softwares', 'name')
+                        ->required()
+                        ->multiple()
+                        ->searchable()
+                        ->preload()
+                        ->columnSpanFull()
+                        ->createOptionForm(SoftwareForm::form()),
                     Textarea::make('note')
                         ->label('Observação')
                         ->maxLength(65535)

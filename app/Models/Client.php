@@ -39,4 +39,11 @@ class Client extends Model
     {
         return $this->hasMany(Contract::class);
     }
+
+    public function softwares(): BelongsToMany
+    {
+        return $this->belongsToMany(Software::class);
+    }
+
+
 }

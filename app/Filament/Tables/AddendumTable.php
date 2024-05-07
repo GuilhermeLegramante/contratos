@@ -51,6 +51,7 @@ class AddendumTable
                 ->toggleable(isToggledHiddenByDefault: false)
                 ->sortable(),
             TextColumn::make('adjustment_percentual')
+                ->label('Percentual de Reajuste')
                 ->numeric()
                 ->toggleable(isToggledHiddenByDefault: false)
                 ->sortable(),
