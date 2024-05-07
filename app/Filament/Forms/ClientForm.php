@@ -28,6 +28,7 @@ class ClientForm
                     Document::make('cpf_cnpj')
                         ->label('CPF ou CNPJ')
                         ->required()
+                        ->validation(false)
                         ->dynamic(),
                     TextInput::make('email')
                         ->label('E-mail')
