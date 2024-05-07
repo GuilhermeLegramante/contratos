@@ -11,12 +11,12 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number',
         'contract_id',
         'addendum_id',
         'date',
         'value',
         'payment_method_id',
+        'note'
     ];
 
     public function contract(): BelongsTo
@@ -27,5 +27,10 @@ class Payment extends Model
     public function addendum(): BelongsTo
     {
         return $this->belongsTo(Addendum::class);
+    }
+
+    public function paymentMethod(): BelongsTo
+    {
+        return $this->belongsTo(PaymentMethod::class);
     }
 }

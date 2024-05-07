@@ -2,47 +2,45 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Forms\ContactForm;
-use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
-use App\Filament\Tables\ContactTable;
-use App\Models\Contact;
-use Filament\Tables\Actions\ActionGroup;
+use App\Filament\Forms\PaymentForm;
+use App\Filament\Resources\PaymentResource\Pages;
+use App\Filament\Resources\PaymentResource\RelationManagers;
+use App\Filament\Tables\PaymentTable;
+use App\Models\Payment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Enums\ActionsPosition;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ContactResource extends Resource
+class PaymentResource extends Resource
 {
-    protected static ?string $model = Contact::class;
+    protected static ?string $model = Payment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'number';
 
-    protected static ?string $modelLabel = 'contato';
+    protected static ?string $modelLabel = 'pagamento';
 
-    protected static ?string $pluralModelLabel = 'contatos';
+    protected static ?string $pluralModelLabel = 'pagamentos';
 
-    protected static ?string $navigationGroup = 'Parâmetros';
-
-    protected static ?string $slug = 'contato';
+    protected static ?string $slug = 'pagamento';
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(ContactForm::form());
+            ->schema(PaymentForm::form());
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns(ContactTable::table())
+            ->columns(PaymentTable::table())
             ->filters([
                 //
             ])
@@ -62,8 +60,13 @@ class ContactResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageContacts::route('/'),
+            'index' => Pages\ManagePayments::route('/'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 
     public static function getNavigationBadge(): ?string

@@ -9,6 +9,7 @@ use App\Models\Client;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Enums\ActionsPosition;
@@ -29,6 +30,9 @@ class ClientResource extends Resource
     protected static ?string $pluralModelLabel = 'clientes';
 
     protected static ?string $slug = 'cliente';
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
+
 
     public static function form(Form $form): Form
     {
@@ -94,5 +98,10 @@ class ClientResource extends Resource
             'create' => Pages\CreateClient::route('/criar'),
             'edit' => Pages\EditClient::route('/{record}/editar'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }

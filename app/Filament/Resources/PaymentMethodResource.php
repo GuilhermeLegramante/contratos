@@ -78,4 +78,9 @@ class PaymentMethodResource extends Resource
             'index' => Pages\ManagePaymentMethods::route('/'),
         ];
     }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 }

@@ -78,4 +78,9 @@ class HiringMethodResource extends Resource
             'index' => Pages\ManageHiringMethods::route('/'),
         ];
     }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 }

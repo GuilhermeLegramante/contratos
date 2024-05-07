@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->double('value');
             $table->foreignId('payment_method_id')->constrained('payment_methods')->restrictOnDelete();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

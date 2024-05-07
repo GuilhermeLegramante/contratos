@@ -48,4 +48,9 @@ class Contract extends Model
     {
         return $this->hasMany(Addendum::class);
     }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

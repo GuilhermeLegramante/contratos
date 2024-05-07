@@ -113,6 +113,7 @@ class ContractResource extends Resource
     {
         return [
             RelationManagers\AddendumsRelationManager::class,
+            RelationManagers\PaymentsRelationManager::class,
         ];
     }
 
@@ -123,5 +124,10 @@ class ContractResource extends Resource
             'create' => Pages\CreateContract::route('/create'),
             'edit' => Pages\EditContract::route('/{record}/edit'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
 }
