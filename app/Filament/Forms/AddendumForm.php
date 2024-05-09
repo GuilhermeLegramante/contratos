@@ -38,9 +38,11 @@ class AddendumForm
                 ->label('Data de Início'),
             DatePicker::make('end_date')
                 ->label('Data de Término'),
-            Money::make('global_value')
+            TextInput::make('global_value')
+                ->numeric()
                 ->label('Valor Global'),
-            Money::make('monthly_value')
+            TextInput::make('monthly_value')
+                ->numeric()
                 ->label('Valor Mensal'),
             FileUpload::make('file')
                 ->label('Arquivo'),
