@@ -26,7 +26,9 @@ class Contract extends Model
     ];
 
     protected $casts = [
-        'is_active' => 'boolean'
+        'is_active' => 'boolean',
+        'global_value' => 'double',
+        'monthly_value' => 'double',
     ];
 
     public function client(): BelongsTo
