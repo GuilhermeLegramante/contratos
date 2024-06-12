@@ -13,11 +13,16 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\ActionsPosition;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Grouping\Group;
+use Filament\Tables\Actions\Action;
 
 class ContractResource extends Resource
 {
@@ -67,11 +72,13 @@ class ContractResource extends Resource
                 TextColumn::make('global_value')
                     ->label('Valor Global')
                     ->money('BRL')
+                    ->summarize(Sum::make()->label('Total')->money('BRL'))
                     ->toggleable(isToggledHiddenByDefault: false)
                     ->sortable(),
                 TextColumn::make('monthly_value')
                     ->label('Valor Mensal')
                     ->money('BRL')
+                    ->summarize(Sum::make()->label('Total')->money('BRL'))
                     ->toggleable(isToggledHiddenByDefault: false)
                     ->sortable(),
                 FileLink::make('file')
@@ -94,8 +101,24 @@ class ContractResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                TernaryFilter::make('is_active')
+                    ->label('Ativo'),
+                SelectFilter::make('client')
+                    ->label('Cliente')
+                    ->searchable()
+                    ->relationship('client', 'name'),
             ])
+            ->groups([
+                Group::make('client.name')
+                    ->label('Cliente')
+                    ->collapsible(),
+            ])
+            ->deferFilters()
+            ->filtersApplyAction(
+                fn (Action $action) => $action
+                    ->link()
+                    ->label('Aplicar Filtro(s)'),
+            )
             ->actions([
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
