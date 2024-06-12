@@ -22,7 +22,7 @@ class StatsOverview extends BaseWidget
             ->sum('monthly_value');
 
         return [
-            Stat::make('Total Mensal', 'R$ ' . number_format($monthlyTotal, 2, ',', '.')),
+            Stat::make('Faturamento Mensal', 'R$ ' . number_format($monthlyTotal, 2, ',', '.')),
             // Stat::make('Total Últimos 12 meses', 'R$ ' .  number_format($yearTotal, 2, ',', '.')),
             Stat::make('Contratos Ativos', $activeContracts),
         ];
