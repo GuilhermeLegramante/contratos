@@ -113,6 +113,7 @@ class ContractResource extends Resource
                     ->label('Cliente')
                     ->collapsible(),
             ])
+            
             ->deferFilters()
             ->filtersApplyAction(
                 fn (Action $action) => $action
