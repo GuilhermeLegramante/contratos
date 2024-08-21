@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contract_id')->nullable()->constrained('contracts')->restrictOnDelete();
             $table->foreignId('addendum_id')->nullable()->constrained('addendums')->restrictOnDelete();
-            $table->date('date');
+            $table->dateTime('date');
             $table->double('value');
             $table->foreignId('payment_method_id')->constrained('payment_methods')->restrictOnDelete();
             $table->text('note')->nullable();
