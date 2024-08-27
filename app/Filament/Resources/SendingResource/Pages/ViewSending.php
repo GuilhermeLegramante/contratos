@@ -74,26 +74,26 @@ class ViewSending extends ViewRecord
             'cache_wsdl' => WSDL_CACHE_NONE, // Desativa o cache da WSDL para garantir que esteja usando a versão mais recente
         ];
 
-        // $xml = "<ConsultarLoteRpsEnvio>
-        //         <Prestador>
-        //             <CpfCnpj>
-        //                 <Cnpj>94771615000165</Cnpj>
-        //             </CpfCnpj>
-        //             <InscricaoMunicipal>2542</InscricaoMunicipal>
-        //         </Prestador>
-        //         <Protocolo>{$sending->protocol}</Protocolo>
-        //     </ConsultarLoteRpsEnvio>";
+        $xml = "<ConsultarLoteRpsEnvio>
+                <Prestador>
+                    <CpfCnpj>
+                        <Cnpj>94771615000165</Cnpj>
+                    </CpfCnpj>
+                    <InscricaoMunicipal>2542</InscricaoMunicipal>
+                </Prestador>
+                <Protocolo>{$sending->protocol}</Protocolo>
+            </ConsultarLoteRpsEnvio>";
 
         // Protocolo que gerou NFSe
-        $xml = "<ConsultarLoteRpsEnvio>
-            <Prestador>
-                <CpfCnpj>
-                    <Cnpj>94771615000165</Cnpj>
-                </CpfCnpj>
-                <InscricaoMunicipal>2542</InscricaoMunicipal>
-            </Prestador>
-            <Protocolo>023b2823-c83b-4e10-a886-360ec37507ca</Protocolo>
-        </ConsultarLoteRpsEnvio>";
+        // $xml = "<ConsultarLoteRpsEnvio>
+        //     <Prestador>
+        //         <CpfCnpj>
+        //             <Cnpj>94771615000165</Cnpj>
+        //         </CpfCnpj>
+        //         <InscricaoMunicipal>2542</InscricaoMunicipal>
+        //     </Prestador>
+        //     <Protocolo>023b2823-c83b-4e10-a886-360ec37507ca</Protocolo>
+        // </ConsultarLoteRpsEnvio>";
 
         $client = new \SoapClient($wsdl);
 
