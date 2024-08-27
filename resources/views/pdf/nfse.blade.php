@@ -329,7 +329,7 @@
             <td
                 style="width:90pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
                 <p class="s4" style="padding-top: 5pt;text-indent: 0pt;text-align: center;">
-                    {{ date('d/m/Y', strtotime($nfse['DataEmissao'])) }}
+                    {{ $nfse['DataEmissao'] }}
                 </p>
             </td>
             <td
@@ -378,7 +378,7 @@
             <td
                 style="width:102pt;border-top-style:solid;border-top-width:2pt;border-left-style:solid;border-left-width:2pt;border-bottom-style:solid;border-bottom-width:2pt;border-right-style:solid;border-right-width:2pt">
                 <p class="s9" style="padding-top: 5pt;padding-left: 29pt;text-indent: 0pt;text-align: left;">
-                    {{ date('d/m/Y', strtotime($nfse['DataEmissao'])) }}
+                    {{ $nfse['DataEmissao'] }}
                 </p>
             </td>
             <td
