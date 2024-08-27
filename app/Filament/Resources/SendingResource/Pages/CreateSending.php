@@ -143,6 +143,7 @@ class CreateSending extends CreateRecord
                 Notification::make()
                     ->title('Erro')
                     ->body($message)
+                    ->duration(null)
                     ->danger()
                     ->send();
 
