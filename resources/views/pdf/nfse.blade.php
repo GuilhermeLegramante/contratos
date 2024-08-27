@@ -482,7 +482,7 @@
                 colspan="6">
                 <p class="s10" style="text-indent: 0pt;line-height: 6pt;text-align: left;">Bairro</p>
                 <p class="s9" style="text-indent: 0pt;line-height: 9pt;text-align: left;">
-                    {{ $nfse['DeclaracaoPrestacaoServico']['InfDeclaracaoPrestacaoServico']['Tomador']['Endereco']['Cep'] }}
+                    {{ $nfse['DeclaracaoPrestacaoServico']['InfDeclaracaoPrestacaoServico']['Tomador']['Endereco']['Bairro'] }}
                 </p>
             </td>
             <td></td>
