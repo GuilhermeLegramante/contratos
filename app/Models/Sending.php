@@ -25,6 +25,7 @@ class Sending extends Model
         'rps',
         'competence_date',
         'contract_id',
+        'cnae_id',
     ];
 
     public function contract(): BelongsTo

@@ -18,7 +18,7 @@ class ClientForm
         return [
             Section::make('Dados do Cliente')
                 ->description(
-                    fn (string $operation): string => $operation === 'create' || $operation === 'edit' ? 'Informe os campos solicitados' : ''
+                    fn(string $operation): string => $operation === 'create' || $operation === 'edit' ? 'Informe os campos solicitados' : ''
                 )
                 ->schema([
                     TextInput::make('name')
@@ -36,6 +36,10 @@ class ClientForm
                         ->maxLength(255),
                     PhoneNumber::make('phone')
                         ->label('Telefone'),
+                    TextInput::make('ibge_code')
+                        ->label('Código do IBGE do Município')
+                        ->required()
+                        ->maxLength(255),
                     Fieldset::make('Endereço')
                         ->relationship('address')
                         ->schema([

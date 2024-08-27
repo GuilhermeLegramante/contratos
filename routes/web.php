@@ -37,7 +37,7 @@ Route::get('/ConsultarLoteRps', function () {
                     </CpfCnpj>
                     <InscricaoMunicipal>2542</InscricaoMunicipal>
                 </Prestador>
-                <Protocolo>d1eb5af1-cb2b-4c43-9d23-0a3a4976836e</Protocolo>
+                <Protocolo>023b2823-c83b-4e10-a886-360ec37507ca</Protocolo>
             </ConsultarLoteRpsEnvio>';
 
     $client = new \SoapClient($wsdl);
@@ -140,7 +140,7 @@ Route::get('/enviar', function () {
                             <Competencia>2024-08-20</Competencia>
                             <Servico>
                                 <Valores>
-                                    <ValorServicos>0.02</ValorServicos>
+                                    <ValorServicos>0.01</ValorServicos>
                                     <ValorPis>0.00</ValorPis>
                                     <ValorCofins>0.00</ValorCofins>
                                     <ValorInss>0.00</ValorInss>

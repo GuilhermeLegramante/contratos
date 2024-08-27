@@ -18,7 +18,8 @@ class Client extends Model
         'address_id',
         'email',
         'phone',
-        'note'
+        'note',
+        'ibge_code',
     ];
 
     protected $casts = [
@@ -44,6 +45,5 @@ class Client extends Model
     {
         return $this->belongsToMany(Software::class);
     }
-
 
 }
