@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\Alignment;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -41,38 +42,45 @@ class SendingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('contract.id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('contract.client.name')
+                    ->label('Cliente')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('situation')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('number')
-                    ->searchable(),
+                    ->label('Situação')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->alignment(Alignment::Center)
+                    ->badge()
+                    ->formatStateUsing(
+                        fn(string $state): string => match ($state) {
+                            '1' => 'NÃO RECEBIDO',
+                            '2' => 'NÃO PROCESSADO',
+                            '3' => 'PROCESSADO COM ERRO',
+                            '4' => 'PROCESSADO COM SUCESSO',
+                        }
+                    )
+                    ->color(fn(string $state): string => match ($state) {
+                        '1' => 'warning',
+                        '2' => 'info',
+                        '3' => 'danger',
+                        '4' => 'success',
+                    }),
                 Tables\Columns\TextColumn::make('date')
+                    ->label('Data')
                     ->dateTime()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('protocol')
+                    ->label('Protocolo')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('emission_date')
+                    ->label('Data de Emissão')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('value')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('aliquot')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('iss_value')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('net_value')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('rps')
-                    ->numeric()
+                    ->label('Valor')
+                    ->money('BRL')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('competence_date')
+                    ->label('Data de Competência')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
