@@ -139,7 +139,8 @@ class CreateSending extends CreateRecord
 
         if (isset($dataArray['ListaMensagemRetorno'])) {
             foreach ($dataArray['ListaMensagemRetorno']['MensagemRetorno'] as $key => $message) {
-
+                dd($message['Mensagem']);
+                
                 Notification::make()
                     ->title($message['Mensagem'])
                     ->body($message['Correcao'])
