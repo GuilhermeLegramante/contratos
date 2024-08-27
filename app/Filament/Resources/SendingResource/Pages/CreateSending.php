@@ -135,10 +135,11 @@ class CreateSending extends CreateRecord
         $xml = simplexml_load_string($response->RecepcionarLoteRpsResult);
         $dataArray = json_decode(json_encode($xml), true);
 
-        dd($dataArray);
+        // dd($dataArray);
 
         if (isset($dataArray['ListaMensagemRetorno'])) {
             foreach ($dataArray['ListaMensagemRetorno']['MensagemRetorno'] as $key => $message) {
+
                 Notification::make()
                     ->title($message['Mensagem'])
                     ->body($message['Correcao'])
