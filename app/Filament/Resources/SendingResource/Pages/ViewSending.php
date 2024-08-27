@@ -121,7 +121,7 @@ class ViewSending extends ViewRecord
                     ->send();
             }
         } else {
-            if(isset(['ListaNfse']['CompNfse']['Nfse']['InfNfse'])){
+            if(isset($dataArray['ListaNfse']['CompNfse']['Nfse']['InfNfse'])){
                 $this->nfse = $dataArray['ListaNfse']['CompNfse']['Nfse']['InfNfse'];
             }
         }
