@@ -35,6 +35,7 @@ class ViewSending extends ViewRecord
 
     public function downloadPdf()
     {
+        dd($this->nfse);
         $generator = new BarcodeGeneratorPNG();
         $identifier = $this->nfse['Numero'] . $this->nfse['CodigoVerificacao'] . $this->nfse['PrestadorServico']['IdentificacaoPrestador']['CpfCnpj']['Cnpj'];
         $this->nfse['identifier'] = $identifier;
