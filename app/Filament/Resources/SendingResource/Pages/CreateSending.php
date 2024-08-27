@@ -9,6 +9,7 @@ use Exception;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Validation\ValidationException;
 use SoapClient;
 use SoapHeader;
 
@@ -24,7 +25,7 @@ class CreateSending extends CreateRecord
         $cnpjTomador = preg_replace('/[^0-9]/', '', $contract->client->cpf_cnpj);
         $cep = str_replace('-', '', $contract->client->address->postal_code);
         $phone = str_replace(['-', '(', ')'], '', $contract->client->phone);
-        
+
         $street = $contract->client->address->street ? $contract->client->address->street : '.';
         $number = $contract->client->address->number ? $contract->client->address->number : '.';
         $complement = $contract->client->address->complement ? $contract->client->address->complement : '.';
@@ -145,7 +146,9 @@ class CreateSending extends CreateRecord
                     ->danger()
                     ->send();
 
-                throw new Exception($message['Correcao']);
+                throw ValidationException::withMessages([
+                    'info' => $message
+                ]);
             }
         }
 
